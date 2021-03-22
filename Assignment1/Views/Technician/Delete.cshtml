@@ -1,0 +1,17 @@
+﻿@model Technician
+@{ ViewBag.Title = "Delete Technician"; }
+@if (TempData["Success"] != null)
+{
+<p class="alert alert-success" id="successMessage">@TempData["Success"]</p>}
+<h1>Remove Technicion</h1>
+<h2>Confirm Deletion</h2>
+<h3>@Model.techName (Technician ID : @Model.techId)</h3>
+<form asp-action="Delete" method="post">
+
+
+
+    <input type="hidden" asp-for="techId" />
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Technician" asp-action="list" class="btn btn-primary">Cancel</a>
+
+</form>

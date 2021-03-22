@@ -1,0 +1,39 @@
+﻿@model List<Technician>
+
+<h1>@ViewData["Title"]</h1>
+<h2>Technician Manager</h2>
+@if (TempData["Success"] != null)
+{              
+ <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Name</th><th>Email</th><th>Phone</th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var techs in Model)
+        {
+            <tr>
+                <td>@techs.techName</td>
+                <td>@techs.techEmail</td>
+                <td>@techs.techPhone</td>
+
+                <td>
+
+                    <a asp-controller="Technician" asp-action="Edit"  asp-route-slug="@techs.Slug" asp-route-id="@techs.techId"
+                        class="btn btn-primary w-100">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Technician" asp-route-slug="@techs.Slug" asp-action="Delete" asp-route-id="@techs.techId"
+                       class="btn btn-primary w-100" style="color:white;">
+                        Delete
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Technician" asp-action="Add" class="btn btn-primary" style="color:white">Add New Technician</a>

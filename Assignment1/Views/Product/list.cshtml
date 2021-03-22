@@ -1,0 +1,43 @@
+﻿@model List<Product>
+
+<h1>@ViewData["Title"]</h1>
+<h2>Product Manager</h2>
+
+@if (TempData["Success"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+ }
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>CODE</th><th>Name</th><th>Price</th><th>Release Date</th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+<tr>
+    <td>@product.productId</td>
+    <td>@product.productName</td>
+    <td>$@product.productPrice</td>
+    <td>@product.DateAdded</td>
+    <td>
+
+        <a asp-controller="Product" asp-action="Edit" asp-route-slug="@product.Slug" asp-route-id="@product.productId"
+           class="btn btn-primary w-100">
+            Edit
+        </a>
+    </td>
+    <td>
+        <a asp-controller="Product" asp-route-slug="@product.Slug" asp-action="Delete" asp-route-id="@product.productId"
+           class="btn btn-primary w-100" style="color:white;">
+            Delete
+        </a>
+
+    </td>
+</tr>}
+    </tbody>
+</table>
+<a asp-controller="Product" asp-action="Add" class="btn btn-primary" style="color:white">Add New Product</a>
+
+
+

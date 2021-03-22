@@ -1,0 +1,17 @@
+﻿@model Product
+@{ ViewBag.Title = "Delete Product"; }
+@if (TempData["Success"] != null)
+{
+<p class="alert alert-success" id="successMessage">@TempData["Success"]</p>}
+<h1>Delete Product</h1>
+<h2>Confirm Deletion</h2>
+<h3>@Model.productName (Product ID : @Model.productId)</h3>
+<form asp-action="Delete" method="post">
+
+
+
+    <input type="hidden" asp-for="productId" />
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-action="list" class="btn btn-primary">Cancel</a>
+
+</form>

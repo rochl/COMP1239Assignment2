@@ -1,0 +1,39 @@
+﻿@model List<Incident>
+
+<h1>@ViewData["Title"]</h1>
+<h2>Incident Manager</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Title</th><th>Customer</th><th>Product</th><th>Date Opened</th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var incident in Model)
+        {
+        <tr>
+            <td>@incident.incidentTitle</td>
+            <td>@incident.incidentCustomer</td>
+            <td>@incident.incidentProduct</td>
+            <td>@incident.DateOpened</td>
+            <td>
+
+                <a asp-controller="Incident" asp-action="Edit" asp-route-slug="@incident.Slug" asp-route-id="@incident.incidentId"
+                    class="btn btn-primary w-100">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Incident" asp-route-slug="@incident.Slug" asp-action="Delete" asp-route-id="@incident.incidentId"
+                    class="btn btn-primary w-100" style="color:white;">
+                    Delete
+                </a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Incident" asp-action="Add" class="btn btn-primary" style="color:white">Add Incident</a>
+
+
+

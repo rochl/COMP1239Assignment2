@@ -1,0 +1,31 @@
+﻿@model Technician
+@{ string title = ViewBag.Action + " Technician";
+                ViewBag.title = title; }
+@if (TempData["Success"] != null)
+{
+<p class="alert alert-success" id="successMessage">@TempData["Success"]</p>}
+<h1>@title</h1>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="techName">Technician Name</label>
+        <input asp-for="techName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="techEmail">Technician Email</label>
+        <input asp-for="techEmail" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="techPhone">Technician Phone Number</label>
+        <input asp-for="techPhone" class="form-control" />
+    </div>
+
+    <input type="hidden" asp-for="techId" />
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Technician" asp-action="list" class="btn btn-primary">Cancel</a>
+
+</form>

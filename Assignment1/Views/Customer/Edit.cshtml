@@ -1,0 +1,68 @@
+﻿@model Customer
+@{
+    string title = ViewBag.Action + " Customer";
+    ViewBag.title = title;
+}
+<h1>@title</h1>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="customerFirstName">First Name</label>
+        <input asp-for="customerFirstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="customerLastName">Last Name</label>
+        <input asp-for="customerLastName" class="form-control" />
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="customerAddress">Address</label>
+        <input asp-for="customerAddress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="customerCity">City</label>
+        <input asp-for="customerCity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="customerState">State</label>
+        <input asp-for="customerState" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="customerPostalCode">Postal Code</label>
+        <input asp-for="customerPostalCode" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="customerCountry">Country</label>
+        <select asp-for="customerCountry" class="form-control">
+            <option>Canada</option>
+            <option>USA</option>
+            <option>Italy</option>
+            <option>Japan</option>
+            <option>Australia</option>
+            <option>Brazil</option>
+            <option>Vietnam</option>
+            <option>Korea</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="customerEmail">Email</label>
+        <input asp-for="customerEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="customerPhone">Phone</label>
+        <input asp-for="customerPhone" class="form-control" />
+    </div>
+
+
+
+    <input type="hidden" asp-for="customerId" />
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Customer" asp-action="list" class="btn btn-primary">Cancel</a>
+
+</form>

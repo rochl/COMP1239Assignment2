@@ -1,0 +1,60 @@
+﻿@model Incident
+
+@{ string title = ViewBag.Action + " Incident";
+    ViewBag.title = title; }
+@if (TempData["Updated"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["Updated"]</p>}
+<h1>@title</h1>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="incidentCustomer">Customer</label>
+        <select asp-for="incidentCustomer" class="form-control">
+            <option value=""> Select a customer</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="incidentProduct">Product</label>
+        <select asp-for="incidentProduct" class="form-control">
+            <option value=""> Select a product</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="incidentTitle">Title</label>
+        <input asp-for="incidentTitle" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="incidentDes">Description</label>
+        <input asp-for="incidentDes" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="incidentTech">Technician</label>
+        <select asp-for="incidentTech" class="form-control">
+            <option value=""> Select a technician</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateOpened">Date Opened</label>
+        <input asp-for="DateOpened" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateClosed">Date Closed</label>
+        <input asp-for="DateClosed" class="form-control" />
+    </div>
+    <input type="hidden" asp-for="incidentId" />
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-action="list" class="btn btn-primary">Cancel</a>
+
+</form>
